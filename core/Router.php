@@ -11,4 +11,11 @@ namespace app\core;
 
 class Router
 {
+
+    protected array $routes = [];
+
+    public function get(string $route, $callback)
+    {
+        $this->routes['get'][$route] = $callback; 
+    }
 }
