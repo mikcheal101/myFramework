@@ -1,0 +1,15 @@
+{
+    "name": "hmh/my-framework",
+    "authors": [
+        {
+            "name": "Hirekaan Micheal Hemen",
+            "email": "hirekaan.micheal@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
