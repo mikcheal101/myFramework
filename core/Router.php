@@ -13,6 +13,7 @@ class Router
 {
 
     protected array $routes = [];
+    public Request $request;
 
     /**
      * Router contructor.
@@ -24,13 +25,24 @@ class Router
         $this->request = $request;
     }
 
-    public function get(string $route, $callback)
+    public function get(string $route, callable $callback)
     {
         $this->routes['get'][$route] = $callback;
     }
 
     public function resolve()
     {
-        $this->request
+        $path = $this->request->getPath();
+        $method = $this->request->getMethod();
+        
+        $callback = $this->routes[$method][$path] ?? false;
+
+        if ($callback === false)
+        {
+            echo "Not Found!";
+            exit;
+        }
+
+        echo call_user_func($callback);
     }
 }
