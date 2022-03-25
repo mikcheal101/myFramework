@@ -12,6 +12,9 @@ $application->router->get("/", function () {
 $application->router->get("/contact", function () {
     return "contact page";
 });
+$application->router->get("/drainage/plumber", function () {
+    return "drainage page";
+});
 
-$application->useRouter($router);
+// $application->useRouter($router);
 $application->run();
