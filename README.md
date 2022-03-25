@@ -1,7 +1,7 @@
 # Mikky Framework
 This is a toy framework built using PHP for learning purposes.
 
-## Basic Features
+### Basic Features
 - Custom Routing.
 - Controllers.
 - Views / Layouts.
@@ -17,7 +17,7 @@ This is a toy framework built using PHP for learning purposes.
 - Application Events.
 
 
-## Folder Structure
+### Folder Structure
 -   bundle: The bundle folder holds the business logic aka controllers, models, runtime folders.
     - models.
     - runtime: storage for all user generated files eg (*.pdf).
