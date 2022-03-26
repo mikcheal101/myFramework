@@ -32,7 +32,24 @@ class Router
 
     protected function renderView(string $view)
     {
-        include_once __DIR__ . "/../bundle/views/". $view . ".php";
+        $layoutContent = $this->layoutContent();
+        $viewContent = $this->renderOnlyView($view);
+
+        return str_replace("{{ body }}", $viewContent, $layoutContent);
+    }
+
+    protected function layoutContent()
+    {
+        ob_start();
+        include_once Application::$ROOT_DIRECTORY  . "/bundle/views/layouts/main.php";
+        return ob_get_clean();
+    }
+
+    protected function renderOnlyView(string $view)
+    {
+        ob_start();
+        include_once Application::$ROOT_DIRECTORY  . "/bundle/views/". $view .".php";
+        return ob_get_clean();
     }
 
     public function resolve()
