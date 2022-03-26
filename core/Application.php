@@ -14,11 +14,13 @@ class Application
 
     public Router $router;
     public Request $request;
+    public Response $response;
 
     public function __construct(string $rootPath)
     {
         self::$ROOT_DIRECTORY = $rootPath;
         $this->request = new Request();
+        $this->response = new Response();
         $this->router = new Router($this->request);
     }
 
