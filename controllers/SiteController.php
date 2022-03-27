@@ -24,7 +24,7 @@ class SiteController extends BaseController
 
     public static function contactPage()
     {
-        return Application::$app->router->renderView("contact");
+        return self::render("contact");
     }
 
     public static function handleContact()
