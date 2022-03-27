@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col">
 
-        <form class="form">
+        <form class="form" action="" method="POST">
             <div class="form-group">
                 <label for="emailSubject">Subject:</label>
                 <input name="emailSubject" class="form-control" type="text" />
