@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Application;
+use app\core\BaseController;
 
 /**
  * class SiteController
@@ -11,14 +12,14 @@ use app\core\Application;
  * @package app\controllers
  */
 
-class SiteController
+class SiteController extends BaseController
 {
     public static function homePage()
     {
         $params = [
             "title" => "Home page",
         ];
-        return Application::$app->router->renderView("home", $params);
+        return self::render("home", $params);
     }
 
     public static function contactPage()
