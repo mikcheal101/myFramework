@@ -18,18 +18,17 @@ This is a toy framework built using PHP for learning purposes.
 
 
 ## Folder Structure
--   bundle: The bundle folder holds the business logic aka controllers, models, runtime folders.
-    - controllers: folder to hold business logic.
-    - core: folder to hold the main application / framework core.
-        - `Application.php`
-        - `Request.php`
-        - `Response.php`
-        - `Router.php`
-    - models.
-    - runtime: storage for all user generated files eg (*.pdf).
-    - views: folder to hold the user presentation layer.
-        - layouts: folder to hold template layouts such as *(main.php)*.
-            - `main.php`
-        - responsePages: folder to hold pages such as 404, 500 etc.
-            - `_404Page.php`
-    - webroot: folder holding the entry point for the framework.
+- controllers: folder to hold business logic.
+- core: folder to hold the main application / framework core.
+    - `Application.php`
+    - `Request.php`
+    - `Response.php`
+    - `Router.php`
+- models.
+- runtime: storage for all user generated files eg (*.pdf).
+- views: folder to hold the user presentation layer.
+    - layouts: folder to hold template layouts such as *(main.php)*.
+        - `main.php`
+    - responsePages: folder to hold pages such as 404, 500 etc.
+        - `_404Page.php`
+- webroot: folder holding the entry point for the framework.
