@@ -29,17 +29,17 @@ class Router
         $this->request = $request;
     }
 
-    public function get(string $route, string | callable | array $callback)
+    public function get(string $route, string | callable | array $callback): void
     {
         $this->routes['get'][$route] = $callback;
     }
 
-    public function post(string $route, string | callable | array $callback)
+    public function post(string $route, string | callable | array $callback): void
     {
         $this->routes['post'][$route] = $callback;
     }
 
-    public function renderView(string $view, array $parameters = [])
+    public function renderView(string $view, array $parameters = []): string
     {
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view, $parameters);
@@ -47,20 +47,20 @@ class Router
         return str_replace("{{ body }}", $viewContent, $layoutContent);
     }
 
-    protected function renderViewContent(string $viewContent)
+    protected function renderViewContent(string $viewContent): string
     {
         $layoutContent = $this->layoutContent();
         return str_replace("{{ body }}", $viewContent, $layoutContent);
     }
 
-    protected function layoutContent()
+    protected function layoutContent(): string | false
     {
         ob_start();
         include_once Application::$ROOT_DIRECTORY  . "/views/layouts/main.php";
         return ob_get_clean();
     }
 
-    protected function renderOnlyView(string $view, array $parameters = [])
+    protected function renderOnlyView(string $view, array $parameters = []): string | false
     {
         foreach($parameters as $key => $value)
         {
@@ -71,7 +71,7 @@ class Router
         return ob_get_clean();
     }
 
-    public function resolve()
+    public function resolve(): string
     {
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
