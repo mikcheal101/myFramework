@@ -22,4 +22,8 @@ This is a toy framework built using PHP for learning purposes.
     - models.
     - runtime: storage for all user generated files eg (*.pdf).
     - views: folder to hold the user presentation layer.
+        - layouts: folder to hold template layouts such as *(main.php)*.
+        - responsePages: folder to hold pages such as 404, 500 etc.
     - controller: folder to hold business logic.
+- core: folder to hold the main application / framework core.
+- webroot: folder holding the entry point for the framework.
