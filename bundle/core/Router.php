@@ -34,7 +34,7 @@ class Router
         $this->routes['get'][$route] = $callback;
     }
 
-    public function post(string $route, string | callable $callback)
+    public function post(string $route, $callback)
     {
         $this->routes['post'][$route] = $callback;
     }
