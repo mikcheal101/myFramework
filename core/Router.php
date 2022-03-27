@@ -42,7 +42,7 @@ class Router
     public function renderView(string $view, array $parameters = [])
     {
         $layoutContent = $this->layoutContent();
-        $viewContent = $this->renderOnlyView($view);
+        $viewContent = $this->renderOnlyView($view, $parameters);
 
         return str_replace("{{ body }}", $viewContent, $layoutContent);
     }
@@ -62,7 +62,10 @@ class Router
 
     protected function renderOnlyView(string $view, array $parameters = [])
     {
-        var_dump($parameters);
+        foreach($parameters as $key => $value)
+        {
+            $$key = $value;
+        }
         ob_start();
         include_once Application::$ROOT_DIRECTORY  . "/views/". $view .".php";
         return ob_get_clean();
