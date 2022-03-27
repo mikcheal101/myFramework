@@ -13,15 +13,19 @@ class Router
 {
 
     protected array $routes = [];
+
+    public Response $response;
     public Request $request;
 
     /**
      * Router contructor.
      * 
      * @param app\core\Request $request
+     * @param app\core\Response $response
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, Response $response)
     {
+        $this->response = $response;
         $this->request = $request;
     }
 
@@ -30,11 +34,22 @@ class Router
         $this->routes['get'][$route] = $callback;
     }
 
+    public function post(string $route, string | callable $callback)
+    {
+        $this->routes['post'][$route] = $callback;
+    }
+
     protected function renderView(string $view)
     {
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view);
 
+        return str_replace("{{ body }}", $viewContent, $layoutContent);
+    }
+
+    protected function renderViewContent(string $viewContent)
+    {
+        $layoutContent = $this->layoutContent();
         return str_replace("{{ body }}", $viewContent, $layoutContent);
     }
 
@@ -61,7 +76,8 @@ class Router
 
         if ($callback === false)
         {
-            return "Not Found!";
+            $this->response->setStatusCode(404);
+            return $this->renderView("responsePages/_404Page");
         }
 
         if (is_string($callback))
