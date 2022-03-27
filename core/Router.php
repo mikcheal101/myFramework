@@ -29,17 +29,17 @@ class Router
         $this->request = $request;
     }
 
-    public function get(string $route, string | callable $callback)
+    public function get(string $route, string | callable | array $callback)
     {
         $this->routes['get'][$route] = $callback;
     }
 
-    public function post(string $route, $callback)
+    public function post(string $route, string | callable | array $callback)
     {
         $this->routes['post'][$route] = $callback;
     }
 
-    protected function renderView(string $view)
+    public function renderView(string $view, array $parameters = [])
     {
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view);
@@ -56,14 +56,15 @@ class Router
     protected function layoutContent()
     {
         ob_start();
-        include_once Application::$ROOT_DIRECTORY  . "/bundle/views/layouts/main.php";
+        include_once Application::$ROOT_DIRECTORY  . "/views/layouts/main.php";
         return ob_get_clean();
     }
 
-    protected function renderOnlyView(string $view)
+    protected function renderOnlyView(string $view, array $parameters = [])
     {
+        var_dump($parameters);
         ob_start();
-        include_once Application::$ROOT_DIRECTORY  . "/bundle/views/". $view .".php";
+        include_once Application::$ROOT_DIRECTORY  . "/views/". $view .".php";
         return ob_get_clean();
     }
 
