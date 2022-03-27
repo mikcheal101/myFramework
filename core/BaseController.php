@@ -20,7 +20,7 @@ class BaseController
      * 
      * @return string|false  
      */
-    protected function render(string $page, array $parameters = []): string | false
+    protected static function render(string $page, array $parameters = []): string | false
     {
         return Application::$app->router->renderView($page, $parameters);
     }
