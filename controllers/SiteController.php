@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\Request;
 
 /**
  * class SiteController
@@ -14,7 +15,7 @@ use app\core\Controller;
 
 class SiteController extends Controller
 {
-    public function homePage()
+    public function homePage(Request $request)
     {
         $params = [
             "title" => "Home page",
@@ -22,13 +23,14 @@ class SiteController extends Controller
         return self::render("home", $params);
     }
 
-    public function contactPage()
+    public function contactPage(Request $request)
     {
         return self::render("contact");
     }
 
-    public function handleContact()
+    public function handleContact(Request $request)
     {
+        var_dump($request->getBody());
         return "Handling submitted data";
     }
 }
