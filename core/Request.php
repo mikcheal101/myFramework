@@ -59,4 +59,34 @@ class Request
 
         return $body;
     }
+
+    /**
+     * Method to confirm if it was a get request
+     * 
+     * @return bool $method
+     */
+    public function isGet(): bool
+    {
+        return $this->method() === "get";
+    }
+
+    /**
+     * Method to confirm if it was a post request
+     * 
+     * @return bool $method
+     */
+    public function isPost(): bool
+    {
+        return $this->method() === "post";
+    }
+
+    /**
+     * Method to confirm if it was a put request
+     * 
+     * @return bool $method
+     */
+    public function isPut(): bool
+    {
+        return $this->method() === "put";
+    }
 }
