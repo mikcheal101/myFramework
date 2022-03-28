@@ -11,5 +11,4 @@ $application->router->get("/", [SiteController::class, "homePage"]);
 $application->router->get("/contact", [SiteController::class, "contactPage"]);
 $application->router->post("/contact", [SiteController::class, "handleContact"]);
 
-// $application->useRouter($router);
 $application->run();
