@@ -33,7 +33,7 @@ class Request
      * 
      * @return string method
      */
-    public function getMethod(): string
+    public function method(): string
     {
         return strtolower($_SERVER["REQUEST_METHOD"]);
     }
@@ -45,13 +45,13 @@ class Request
     {
         $body = [];
 
-        if ($this->getMethod() === "post") {
+        if ($this->method() === "post") {
             foreach ($_GET as $key => $value) {
                 $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
         }
 
-        if ($this->getMethod() === "post") {
+        if ($this->method() === "post") {
             foreach ($_POST as $key => $value) {
                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
             }
