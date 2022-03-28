@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\core\Application;
-use app\core\BaseController;
+use app\core\Controller;
 
 /**
  * class SiteController
@@ -12,9 +12,9 @@ use app\core\BaseController;
  * @package app\controllers
  */
 
-class SiteController extends BaseController
+class SiteController extends Controller
 {
-    public static function homePage()
+    public function homePage()
     {
         $params = [
             "title" => "Home page",
@@ -22,12 +22,12 @@ class SiteController extends BaseController
         return self::render("home", $params);
     }
 
-    public static function contactPage()
+    public function contactPage()
     {
         return self::render("contact");
     }
 
-    public static function handleContact()
+    public function handleContact()
     {
         return "Handling submitted data";
     }

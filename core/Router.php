@@ -78,6 +78,7 @@ class Router
         
         $callback = $this->routes[$method][$path] ?? false;
 
+        
         if ($callback === false)
         {
             $this->response->setStatusCode(404);
@@ -89,6 +90,13 @@ class Router
             return $this->renderView($callback);
         }
 
+        if (is_array($callback))
+        {
+            $callback[0] = new $callback[0]();
+        }
+
         return call_user_func($callback);
     }
+
+    
 }
